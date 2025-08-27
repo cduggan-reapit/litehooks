@@ -29,7 +29,7 @@ public static class ExampleEntityTests
         [Fact]
         public void Should_NotChangeValues_WhenNullProvided()
         {
-            var sut = CreateSut(); ;
+            var sut = CreateSut();
             sut.Update(null, null);
             sut.IsDirty.Must().BeFalse();
             sut.DateModified.Must().Be(sut.DateCreated);
@@ -38,7 +38,7 @@ public static class ExampleEntityTests
         [Fact]
         public void Should_NotChangeValues_WhenValuesUnchanged()
         {
-            var sut = CreateSut(); ;
+            var sut = CreateSut();
             sut.Update(sut.Name, sut.Description);
             sut.IsDirty.Must().BeFalse();
             sut.DateModified.Must().Be(sut.DateCreated);

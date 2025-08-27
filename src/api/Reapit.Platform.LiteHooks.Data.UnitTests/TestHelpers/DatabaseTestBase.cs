@@ -22,10 +22,10 @@ public abstract class DatabaseTestBase : IAsyncLifetime, IDisposable
         => _context ??= await _contextFactory.CreateContextAsync(ensureCreated, cancellationToken);
 
     /// <summary>Called immediately after the class has been created, before it is used.</summary>
-    public virtual Task InitializeAsync() => Task.CompletedTask;
+    public virtual ValueTask InitializeAsync() => ValueTask.CompletedTask;
 
     /// <summary>Called when an object is no longer needed. Called just before Dispose() if the class also implements that.</summary>
-    public virtual Task DisposeAsync() => Task.CompletedTask;
+    public virtual ValueTask DisposeAsync() => ValueTask.CompletedTask;
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
     public void Dispose()

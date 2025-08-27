@@ -8,7 +8,7 @@ namespace Reapit.Platform.LiteHooks.Data.UnitTests.Repositories.Examples;
 /// <summary>Base class responsible for setting up the test environment for EntityExample repository tests.</summary>
 public class ExampleRepositoryTestsBase : DatabaseTestBase
 {
-    public override async Task InitializeAsync()
+    public override async ValueTask InitializeAsync()
     {
         await Context.Examples.AddRangeAsync(SeedData);
         _ = await Context.SaveChangesAsync();
