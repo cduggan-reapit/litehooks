@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using MediatR;
 using Microsoft.Extensions.Logging;
 using Reapit.Platform.Common.Exceptions;
 using Reapit.Platform.Common.Extensions;
+using Reapit.Platform.CQRS;
 using Reapit.Platform.LiteHooks.Data.Services;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
@@ -23,7 +23,7 @@ public class PatchExampleCommandHandler(
     /// <returns>Response from the request.</returns>
     /// <exception cref="ValidationException">when the request did not pass all validation checks.</exception>
     /// <exception cref="NotFoundException">when no entity was found with the requested identifier.</exception>
-    public async Task<ExampleEntity> Handle(PatchExampleCommand request, CancellationToken cancellationToken)
+    public async Task<ExampleEntity> HandleAsync(PatchExampleCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Patching {type}: {request}", nameof(ExampleEntity), request.Serialize());
         var validation = await validator.ValidateAsync(request, cancellationToken);

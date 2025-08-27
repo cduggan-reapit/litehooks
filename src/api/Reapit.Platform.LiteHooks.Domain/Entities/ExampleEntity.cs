@@ -1,4 +1,4 @@
-﻿using Reapit.Platform.LiteHooks.Domain.Entities.Abstract;
+﻿using Reapit.Platform.Internal.Common.Entities;
 
 namespace Reapit.Platform.LiteHooks.Domain.Entities;
 

@@ -1,29 +1,25 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Reapit.Platform.ApiVersioning.Attributes;
+using Reapit.Platform.CQRS;
+using Reapit.Platform.Internal.Common.Pagination;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.RequestModels;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.RequestModels.Examples;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.ResponseModels;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.ResponseModels.Examples;
 using Reapit.Platform.LiteHooks.Api.Controllers.Shared;
 using Reapit.Platform.LiteHooks.Api.Controllers.Shared.Examples;
-using Reapit.Platform.LiteHooks.Core.UseCases.Examples.CreateExample;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.DeleteExample;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExampleById;
-using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExamples;
-using Reapit.Platform.LiteHooks.Core.UseCases.Examples.PatchExample;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1;
 
 /// <summary>Endpoints used to interact with ExampleEntity objects. </summary>
 /// <param name="mediator">The Mediatr sender.</param>
-/// <param name="mapper">The AutoMapper service.</param>
 [IntroducedInVersion(1, 0)]
 [ProducesResponseType<ProblemDetails>(400)]
 [SwaggerResponseExample(400, typeof(ApiVersionProblemDetailsExample))]
-public class ExamplesController(ISender mediator, IMapper mapper) : ApiControllerBase
+public class ExamplesController(IMediator mediator) : ApiControllerBase
 {
     /// <summary>Get a page of Examples matching optional filter criteria.</summary>
     /// <param name="model">The filter model.</param>
@@ -37,9 +33,8 @@ public class ExamplesController(ISender mediator, IMapper mapper) : ApiControlle
         [FromQuery] GetExamplesRequestModel model,
         CancellationToken cancellationToken)
     {
-        var query = mapper.Map<GetExamplesQuery>(model);
-        var entities = await mediator.Send(query, cancellationToken);
-        return Ok(mapper.Map<ResultPage<ExampleResponseModel>>(entities));
+        var entities = await mediator.SendAsync(model.ToQuery(), cancellationToken);
+        return Ok(entities.ToResultPage(ExampleResponseModel.FromEntity));
     }
 
     /// <summary>Create a new Example.</summary>
@@ -55,12 +50,11 @@ public class ExamplesController(ISender mediator, IMapper mapper) : ApiControlle
         [FromBody] CreateExampleRequestModel model,
         CancellationToken cancellationToken)
     {
-        var command = mapper.Map<CreateExampleCommand>(model);
-        var entity = await mediator.Send(command, cancellationToken);
+        var entity = await mediator.SendAsync(model.ToCommand(), cancellationToken);
         return CreatedAtAction(
             actionName: nameof(GetExampleById),
             routeValues: new { id = entity.Id },
-            value: mapper.Map<ExampleResponseModel>(entity));
+            value: ExampleResponseModel.FromEntity(entity));
     }
 
     /// <summary>Get an Example by its unique identifier.</summary>
@@ -74,8 +68,8 @@ public class ExamplesController(ISender mediator, IMapper mapper) : ApiControlle
     public async Task<IActionResult> GetExampleById(string id, CancellationToken cancellationToken)
     {
         var query = new GetExampleByIdQuery(id);
-        var entity = await mediator.Send(query, cancellationToken);
-        return Ok(mapper.Map<ExampleDetailResponseModel>(entity));
+        var entity = await mediator.SendAsync(query, cancellationToken);
+        return Ok(ExampleDetailResponseModel.FromEntity(entity));
     }
 
     /// <summary>Update an Example by its unique identifier.</summary>
@@ -94,8 +88,7 @@ public class ExamplesController(ISender mediator, IMapper mapper) : ApiControlle
         [FromBody] PatchExampleRequestModel model,
         CancellationToken cancellationToken)
     {
-        var query = new PatchExampleCommand(id, model.Name, model.Description);
-        _ = await mediator.Send(query, cancellationToken);
+        _ = await mediator.SendAsync(model.ToCommand(id), cancellationToken);
         return NoContent();
     }
 
@@ -109,11 +102,7 @@ public class ExamplesController(ISender mediator, IMapper mapper) : ApiControlle
     public async Task<IActionResult> DeleteExample(string id, CancellationToken cancellationToken)
     {
         var query = new DeleteExampleCommand(id);
-        _ = await mediator.Send(query, cancellationToken);
+        _ = await mediator.SendAsync(query, cancellationToken);
         return NoContent();
     }
-
-    [HttpGet("fail")]
-    public Task<IActionResult> Fail()
-        => throw new NotImplementedException();
 }

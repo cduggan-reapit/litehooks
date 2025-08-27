@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging.Abstractions;
 using Reapit.Platform.Common.Exceptions;
-using Reapit.Platform.Testing.Fluent;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.DeleteExample;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Data.Services;
@@ -23,7 +22,7 @@ public static class DeleteExampleCommandHandlerTests
 
             var command = GetRequest();
             var sut = CreateSut();
-            var action = () => sut.Handle(command, CancellationToken.None);
+            var action = () => sut.HandleAsync(command, CancellationToken.None);
             await action.Must().ThrowAsync<NotFoundException>();
         }
 
@@ -36,7 +35,7 @@ public static class DeleteExampleCommandHandlerTests
 
             var command = GetRequest(entity.Id);
             var sut = CreateSut();
-            _ = await sut.Handle(command, CancellationToken.None);
+            _ = await sut.HandleAsync(command, CancellationToken.None);
 
             entity.DateDeleted.Must().NotBeNull();
             await _unitOfWork.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());

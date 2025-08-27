@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Reapit.Platform.CQRS;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
 namespace Reapit.Platform.LiteHooks.Core.UseCases.Examples.CreateExample;

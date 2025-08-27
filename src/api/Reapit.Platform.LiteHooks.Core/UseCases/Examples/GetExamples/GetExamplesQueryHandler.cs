@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using MediatR;
 using Microsoft.Extensions.Logging;
 using Reapit.Platform.Common.Extensions;
+using Reapit.Platform.CQRS;
+using Reapit.Platform.Internal.Common.Database.Models;
 using Reapit.Platform.LiteHooks.Core.Exceptions;
-using Reapit.Platform.LiteHooks.Data.Repositories;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
@@ -23,7 +23,7 @@ public class GetExamplesQueryHandler(
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Response from the request.</returns>
     /// <exception cref="QueryValidationException">when the query parameters did not pass all validation checks.</exception>
-    public async Task<IEnumerable<ExampleEntity>> Handle(GetExamplesQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ExampleEntity>> HandleAsync(GetExamplesQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Querying {type}: {request}", nameof(ExampleEntity), request.Serialize());
         var validation = await validator.ValidateAsync(request, cancellationToken);

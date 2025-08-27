@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExamples;
+using System.Text.Json.Serialization;
 
 namespace Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.RequestModels;
 
@@ -19,4 +20,17 @@ public record GetExamplesRequestModel(
     [property: JsonPropertyName("createdFrom")] DateTime? CreatedFrom = null,
     [property: JsonPropertyName("createdTo")] DateTime? CreatedTo = null,
     [property: JsonPropertyName("modifiedFrom")] DateTime? ModifiedFrom = null,
-    [property: JsonPropertyName("modifiedTo")] DateTime? ModifiedTo = null);
+    [property: JsonPropertyName("modifiedTo")] DateTime? ModifiedTo = null)
+{
+    /// <summary>Create an internal query representing this request model.</summary>
+    public GetExamplesQuery ToQuery()
+        => new(
+            Cursor: Cursor,
+            PageSize: PageSize ?? ServiceConstants.DefaultPageSize,
+            Name: Name,
+            Description: Description,
+            CreatedFrom: CreatedFrom,
+            CreatedTo: CreatedTo,
+            ModifiedFrom: ModifiedFrom,
+            ModifiedTo: ModifiedTo);
+}

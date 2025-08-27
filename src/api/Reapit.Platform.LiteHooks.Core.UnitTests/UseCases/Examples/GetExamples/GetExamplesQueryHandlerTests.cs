@@ -1,10 +1,9 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.Logging.Abstractions;
-using Reapit.Platform.Testing.Fluent;
+using Reapit.Platform.Internal.Common.Database.Models;
 using Reapit.Platform.LiteHooks.Core.Exceptions;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExamples;
-using Reapit.Platform.LiteHooks.Data.Repositories;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
@@ -25,7 +24,7 @@ public static class GetExamplesQueryHandlerTests
 
             var query = GetRequest();
             var sut = CreateSut();
-            var action = () => sut.Handle(query, CancellationToken.None);
+            var action = () => sut.HandleAsync(query, CancellationToken.None);
             await action.Must().ThrowAsync<QueryValidationException>();
         }
 
@@ -50,7 +49,7 @@ public static class GetExamplesQueryHandlerTests
                 .Returns(entities);
 
             var sut = CreateSut();
-            var result = await sut.Handle(query, CancellationToken.None);
+            var result = await sut.HandleAsync(query, CancellationToken.None);
             result.Must().BeEquivalentTo(entities);
         }
 

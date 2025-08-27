@@ -1,7 +1,7 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Reapit.Platform.Common.Exceptions;
 using Reapit.Platform.Common.Extensions;
+using Reapit.Platform.CQRS;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
@@ -17,7 +17,7 @@ public class GetExampleByIdQueryHandler(IReadOnlyExamplesRepository repository, 
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Response from the request.</returns>
     /// <exception cref="NotFoundException">when no entity was found with the requested identifier.</exception>
-    public async Task<ExampleEntity> Handle(GetExampleByIdQuery request, CancellationToken cancellationToken)
+    public async Task<ExampleEntity> HandleAsync(GetExampleByIdQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Getting {type}: {request}", nameof(ExampleEntity), request.Serialize());
         return await repository.GetByIdAsync(request.Id, cancellationToken)

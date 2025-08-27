@@ -1,18 +1,15 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using Reapit.Platform.Common.Providers.Identifiers;
 using Reapit.Platform.Common.Providers.Temporal;
-using Reapit.Platform.Testing.Helpers;
+using Reapit.Platform.CQRS;
+using Reapit.Platform.Internal.Common.Pagination;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.RequestModels;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.ResponseModels;
-using Reapit.Platform.LiteHooks.Api.Controllers.Shared;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.CreateExample;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.DeleteExample;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExampleById;
-using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExamples;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.PatchExample;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
@@ -35,10 +32,10 @@ public static class ExamplesControllerTests
                 ModifiedFrom: DateTime.UnixEpoch.AddDays(3),
                 ModifiedTo: DateTime.UnixEpoch.AddDays(4));
 
-            var expectedRequest = Mapper.Map<GetExamplesQuery>(request);
-            var expectedContent = Mapper.Map<ResultPage<ExampleResponseModel>>(SeedData);
+            var expectedRequest = request.ToQuery();
+            var expectedContent = SeedData.ToResultPage(ExampleResponseModel.FromEntity);
 
-            Mediator.Send(expectedRequest, Arg.Any<CancellationToken>())
+            Mediator.SendAsync(expectedRequest, Arg.Any<CancellationToken>())
                 .Returns(SeedData);
 
             var sut = CreateSut();
@@ -57,8 +54,8 @@ public static class ExamplesControllerTests
             var entity = new ExampleEntity(request.Name, request.Description);
 
             var expectedCommand = new CreateExampleCommand(request.Name, request.Description);
-            var expectedContent = Mapper.Map<ExampleResponseModel>(entity);
-            Mediator.Send(expectedCommand, Arg.Any<CancellationToken>())
+            var expectedContent = ExampleResponseModel.FromEntity(entity);
+            Mediator.SendAsync(expectedCommand, Arg.Any<CancellationToken>())
                 .Returns(entity);
 
             var sut = CreateSut();
@@ -78,9 +75,9 @@ public static class ExamplesControllerTests
             const string id = "002";
             var entity = SeedData.Single(item => item.Id == id);
             var expectedQuery = new GetExampleByIdQuery(id);
-            var expectedContent = Mapper.Map<ExampleDetailResponseModel>(entity);
+            var expectedContent = ExampleDetailResponseModel.FromEntity(entity);
 
-            Mediator.Send(expectedQuery, Arg.Any<CancellationToken>())
+            Mediator.SendAsync(expectedQuery, Arg.Any<CancellationToken>())
                 .Returns(entity);
 
             var sut = CreateSut();
@@ -103,7 +100,7 @@ public static class ExamplesControllerTests
             var result = await sut.PatchExample(id, request, CancellationToken.None) as NoContentResult;
             result.Must().NotBeNull().And.Match<StatusCodeResult>(r => r.StatusCode == 204);
 
-            await Mediator.Received(1).Send(expectedCommand, Arg.Any<CancellationToken>());
+            await Mediator.Received(1).SendAsync(expectedCommand, Arg.Any<CancellationToken>());
         }
     }
 
@@ -119,18 +116,16 @@ public static class ExamplesControllerTests
             var result = await sut.DeleteExample(id, CancellationToken.None) as NoContentResult;
             result.Must().NotBeNull().And.Match<StatusCodeResult>(r => r.StatusCode == 204);
 
-            await Mediator.Received(1).Send(expectedCommand, Arg.Any<CancellationToken>());
+            await Mediator.Received(1).SendAsync(expectedCommand, Arg.Any<CancellationToken>());
         }
     }
 
     public abstract class ExamplesControllerTestBase
     {
-        protected readonly ISender Mediator = Substitute.For<ISender>();
-
-        protected readonly IMapper Mapper = AutoMapperFactory.Create<ExamplesProfile>();
-
+        protected readonly IMediator Mediator = Substitute.For<IMediator>();
+        
         protected ExamplesController CreateSut()
-            => new(Mediator, Mapper);
+            => new(Mediator);
 
         private static readonly DateTime BaseDate = new(2025, 1, 1, 12, 0, 0, DateTimeKind.Utc);
 

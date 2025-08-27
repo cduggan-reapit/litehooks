@@ -1,5 +1,4 @@
-﻿using Reapit.Platform.Testing.Fluent;
-using Reapit.Platform.LiteHooks.Core.UseCases.Examples;
+﻿using Reapit.Platform.LiteHooks.Core.UseCases.Examples;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.CreateExample;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Domain.Entities;

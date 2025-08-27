@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Reapit.Platform.LiteHooks.Core.UseCases.Examples.CreateExample;
+using System.Text.Json.Serialization;
 
 namespace Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.RequestModels;
 
@@ -7,4 +8,9 @@ namespace Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.RequestModels;
 /// <param name="Description">An optional description of the Example.</param>
 public record CreateExampleRequestModel(
     [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("description")] string? Description);
+    [property: JsonPropertyName("description")] string? Description)
+{
+    /// <summary>Create an internal command representing this request model.</summary>
+    public CreateExampleCommand ToCommand()
+        => new(Name: Name, Description: Description);
+}

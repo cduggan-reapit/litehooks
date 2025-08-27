@@ -63,11 +63,9 @@ public static class ExampleEntityTests
         public void Should_SetDeletedTimestamp()
         {
             var sut = CreateSut();
-            sut.Delete();
+            sut.SoftDelete();
 
             sut.DateDeleted.Must().NotBeNull();
-            sut.DateModified.Must().NotBe(sut.DateCreated);
-            sut.IsDirty.Must().BeTrue();
         }
     }
 

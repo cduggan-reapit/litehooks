@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Reapit.Platform.LiteHooks.Domain.Entities;
+using System.Text.Json.Serialization;
 
 namespace Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.ResponseModels;
 
@@ -13,4 +14,15 @@ public record ExampleDetailResponseModel(
     [property: JsonPropertyName("name")] string Name,
     [property: JsonPropertyName("description")] string? Description,
     [property: JsonPropertyName("created")] DateTime DateCreated,
-    [property: JsonPropertyName("modified")] DateTime DateModified);
+    [property: JsonPropertyName("modified")] DateTime DateModified)
+{
+    /// <summary>Get an instance of <see cref="ExampleDetailResponseModel"/> from a given <see cref="ExampleEntity"/>. </summary>
+    /// <param name="entity">The entity to convert.</param>
+    public static ExampleDetailResponseModel FromEntity(ExampleEntity entity)
+        => new(
+            Id: entity.Id,
+            Name: entity.Name,
+            Description: entity.Description,
+            DateCreated: entity.DateCreated.ToUniversalTime(),
+            DateModified: entity.DateModified.ToUniversalTime());
+};

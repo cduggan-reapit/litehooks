@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Reapit.Platform.Common" Version="3.1.0" />
+    <PackageReference Include="Reapit.Platform.Common" Version="3.5.0" />
+    <PackageReference Include="Reapit.Platform.Internal.Common" Version="1.1.1" />
   </ItemGroup>
 
 </Project>

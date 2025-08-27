@@ -1,0 +1,1 @@
+﻿global using ServiceConstants = Reapit.Platform.LiteHooks.Api.Infrastructure.Constants;

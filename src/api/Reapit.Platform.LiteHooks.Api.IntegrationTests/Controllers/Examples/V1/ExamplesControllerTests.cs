@@ -1,10 +1,9 @@
 ﻿using Reapit.Platform.Common.Providers.Identifiers;
 using Reapit.Platform.Common.Providers.Temporal;
+using Reapit.Platform.Internal.Common.Pagination;
 using Reapit.Platform.Testing.Fluent;
-using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.RequestModels;
 using Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.ResponseModels;
-using Reapit.Platform.LiteHooks.Api.Controllers.Shared;
 using Reapit.Platform.LiteHooks.Data.Context;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 using System.Net;
@@ -53,8 +52,8 @@ public static class ExamplesControllerTests
             var secondPageEntities = SeedData.OrderBy(o => o.Cursor).Skip(10).Take(10);
             var secondPageOffset = firstPageEntities.MaxBy(d => d.Cursor)!.Cursor;
 
-            var expectedFirstPage = Mapper.Map<ResultPage<ExampleResponseModel>>(firstPageEntities);
-            var expectedSecondPage = Mapper.Map<ResultPage<ExampleResponseModel>>(secondPageEntities);
+            var expectedFirstPage = firstPageEntities.ToResultPage(ExampleResponseModel.FromEntity);
+            var expectedSecondPage = secondPageEntities.ToResultPage(ExampleResponseModel.FromEntity);
 
             var firstResponse = await CreateRequest(HttpMethod.Get, BasePath + "?pageSize=10")
                 .SetHeader(ApiVersionHeader, "1.0")
@@ -175,12 +174,12 @@ public static class ExamplesControllerTests
             await InitializeDatabaseAsync();
 
             var entity = SeedData.Single(i => i.Id == id);
-            var expected = Mapper.Map<ExampleDetailResponseModel>(entity);
+            var expected = ExampleDetailResponseModel.FromEntity(entity);
             
             var response = await CreateRequest(HttpMethod.Get, $"{BasePath}/{id}")
                 .SetHeader(ApiVersionHeader, "1.0")
                 .SendAsync<TestApiFactory, Program>(ApiFactory);
-
+            
             response.Must().HaveStatusCode(HttpStatusCode.OK)
                 .And.HaveJsonContent(expected);
         }
@@ -316,9 +315,7 @@ public static class ExamplesControllerTests
         protected const string ApiVersionHeader = "x-api-version";
 
         protected const string BasePath = "api/examples";
-
-        protected readonly IMapper Mapper = AutoMapperFactory.Create<ExamplesProfile>();
-
+        
         protected static readonly IEnumerable<ExampleEntity> SeedData = GetSeedData();
 
         private static readonly DateTimeOffset BaseDate = new(2020, 1, 1, 12, 0, 0, TimeSpan.Zero);

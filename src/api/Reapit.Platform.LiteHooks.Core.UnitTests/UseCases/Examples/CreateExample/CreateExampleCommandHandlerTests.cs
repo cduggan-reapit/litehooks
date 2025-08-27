@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.Logging.Abstractions;
-using Reapit.Platform.Testing.Fluent;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.CreateExample;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Data.Services;
@@ -25,7 +24,7 @@ public static class CreateExampleCommandHandlerTests
 
             var command = GetRequest();
             var sut = CreateSut();
-            var action = () => sut.Handle(command, CancellationToken.None);
+            var action = () => sut.HandleAsync(command, CancellationToken.None);
             await action.Must().ThrowAsync<ValidationException>();
         }
 
@@ -37,7 +36,7 @@ public static class CreateExampleCommandHandlerTests
 
             var command = GetRequest(description: "description");
             var sut = CreateSut();
-            _ = await sut.Handle(command, CancellationToken.None);
+            _ = await sut.HandleAsync(command, CancellationToken.None);
 
             await _unitOfWork.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());
             await _repository.Received(1).CreateAsync(Arg.Is<ExampleEntity>(ee => ee.Name == command.Name && ee.Description == command.Description), Arg.Any<CancellationToken>());

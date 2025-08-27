@@ -1,7 +1,7 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Reapit.Platform.Common.Exceptions;
 using Reapit.Platform.Common.Extensions;
+using Reapit.Platform.CQRS;
 using Reapit.Platform.LiteHooks.Data.Services;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
@@ -17,13 +17,13 @@ public class DeleteExampleCommandHandler(IUnitOfWork unitOfWork, ILogger<DeleteE
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Response from the request.</returns>
     /// <exception cref="NotFoundException">when no entity was found with the requested identifier.</exception>
-    public async Task<ExampleEntity> Handle(DeleteExampleCommand request, CancellationToken cancellationToken)
+    public async Task<ExampleEntity> HandleAsync(DeleteExampleCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Deleting {type}: {request}", nameof(ExampleEntity), request.Serialize());
         var entity = await unitOfWork.Examples.GetByIdAsync(request.Id, cancellationToken)
             ?? throw new NotFoundException(typeof(ExampleEntity), request.Id);
 
-        entity.Delete();
+        entity.SoftDelete();
         _ = await unitOfWork.Examples.UpdateAsync(entity, cancellationToken);
 
         await unitOfWork.SaveChangesAsync(cancellationToken);

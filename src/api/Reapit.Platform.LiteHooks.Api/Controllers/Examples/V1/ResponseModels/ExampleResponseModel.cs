@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Reapit.Platform.LiteHooks.Domain.Entities;
+using System.Text.Json.Serialization;
 
 namespace Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.ResponseModels;
 
@@ -9,4 +10,10 @@ namespace Reapit.Platform.LiteHooks.Api.Controllers.Examples.V1.ResponseModels;
 public record ExampleResponseModel(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("description")] string? Description);
+    [property: JsonPropertyName("description")] string? Description)
+{
+    /// <summary>Get an instance of <see cref="ExampleResponseModel"/> from a given <see cref="ExampleEntity"/>. </summary>
+    /// <param name="entity">The entity to convert.</param>
+    public static ExampleResponseModel FromEntity(ExampleEntity entity)
+        => new(Id: entity.Id, Name: entity.Name, Description: entity.Description);
+};

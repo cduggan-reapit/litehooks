@@ -2,7 +2,6 @@
 using FluentValidation.Results;
 using Microsoft.Extensions.Logging.Abstractions;
 using Reapit.Platform.Common.Exceptions;
-using Reapit.Platform.Testing.Fluent;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.PatchExample;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Data.Services;
@@ -26,7 +25,7 @@ public static class PatchExampleCommandHandlerTests
 
             var command = GetRequest();
             var sut = CreateSut();
-            var action = () => sut.Handle(command, CancellationToken.None);
+            var action = () => sut.HandleAsync(command, CancellationToken.None);
             await action.Must().ThrowAsync<ValidationException>();
         }
 
@@ -41,7 +40,7 @@ public static class PatchExampleCommandHandlerTests
 
             var command = GetRequest();
             var sut = CreateSut();
-            var action = () => sut.Handle(command, CancellationToken.None);
+            var action = () => sut.HandleAsync(command, CancellationToken.None);
             await action.Must().ThrowAsync<NotFoundException>();
         }
 
@@ -58,7 +57,7 @@ public static class PatchExampleCommandHandlerTests
 
             var command = GetRequest(entity.Id);
             var sut = CreateSut();
-            _ = await sut.Handle(command, CancellationToken.None);
+            _ = await sut.HandleAsync(command, CancellationToken.None);
 
             // No changes, so no update applied
             await _unitOfWork.DidNotReceive().SaveChangesAsync(Arg.Any<CancellationToken>());
@@ -78,7 +77,7 @@ public static class PatchExampleCommandHandlerTests
 
             var command = GetRequest(entity.Id, "new name");
             var sut = CreateSut();
-            _ = await sut.Handle(command, CancellationToken.None);
+            _ = await sut.HandleAsync(command, CancellationToken.None);
 
             // The entity has been modified so the DateModified value will differ from the DateCreated value
             entity.DateModified.Must().NotBe(entity.DateCreated);

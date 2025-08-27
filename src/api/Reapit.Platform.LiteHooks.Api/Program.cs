@@ -32,9 +32,6 @@ builder.Services.AddCommonServices()
 builder.AddCoreServices()
     .AddDataServices();
 
-// Add services for the Api project
-builder.Services.AddAutoMapper(typeof(Reapit.Platform.LiteHooks.Api.Program).Assembly);
-
 // Register controllers for routing
 builder.Services.AddControllers();
 

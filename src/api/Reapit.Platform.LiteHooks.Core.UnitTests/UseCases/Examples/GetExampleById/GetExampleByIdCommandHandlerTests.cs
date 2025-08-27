@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging.Abstractions;
 using Reapit.Platform.Common.Exceptions;
-using Reapit.Platform.Testing.Fluent;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExampleById;
 using Reapit.Platform.LiteHooks.Data.Repositories.Examples;
 using Reapit.Platform.LiteHooks.Domain.Entities;
@@ -21,7 +20,7 @@ public static class GetExampleByIdCommandHandlerTests
 
             var request = GetRequest();
             var sut = CreateSut();
-            var action = () => sut.Handle(request, CancellationToken.None);
+            var action = () => sut.HandleAsync(request, CancellationToken.None);
             await action.Must().ThrowAsync<NotFoundException>();
         }
 
@@ -34,7 +33,7 @@ public static class GetExampleByIdCommandHandlerTests
 
             var command = GetRequest(entity.Id);
             var sut = CreateSut();
-            var actual = await sut.Handle(command, CancellationToken.None);
+            var actual = await sut.HandleAsync(command, CancellationToken.None);
             actual.Must().BeSameAs(entity);
         }
 

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MediatR;
+using Reapit.Platform.CQRS;
 using Microsoft.Extensions.Logging;
 using Reapit.Platform.Common.Extensions;
 using Reapit.Platform.LiteHooks.Data.Services;
@@ -21,7 +21,7 @@ public class CreateExampleCommandHandler(
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Response from the request.</returns>
     /// <exception cref="ValidationException">when the request did not pass all validation checks.</exception>
-    public async Task<ExampleEntity> Handle(CreateExampleCommand request, CancellationToken cancellationToken)
+    public async Task<ExampleEntity> HandleAsync(CreateExampleCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Creating {type}: {request}", nameof(ExampleEntity), request.Serialize());
         var validation = await validator.ValidateAsync(request, cancellationToken);

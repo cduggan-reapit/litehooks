@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Reapit.Platform.Internal.Common.Database.Filters;
+using Reapit.Platform.Internal.Common.Database.Models;
 using Reapit.Platform.LiteHooks.Data.Context;
 using Reapit.Platform.LiteHooks.Data.Repositories.Common.Abstract;
-using Reapit.Platform.LiteHooks.Data.Repositories.Common.Filters;
 using Reapit.Platform.LiteHooks.Domain.Entities;
 
 namespace Reapit.Platform.LiteHooks.Data.Repositories.Examples;

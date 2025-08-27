@@ -1,5 +1,4 @@
 ﻿using FluentValidation.Results;
-using Reapit.Platform.Testing.Fluent;
 using Reapit.Platform.LiteHooks.Core.Exceptions;
 
 namespace Reapit.Platform.LiteHooks.Core.UnitTests.Exceptions;

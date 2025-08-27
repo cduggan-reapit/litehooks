@@ -1,4 +1,4 @@
-﻿using Reapit.Platform.LiteHooks.Api.Controllers.Shared;
+﻿using Reapit.Platform.Internal.Common.Pagination;
 using Swashbuckle.AspNetCore.Filters;
 using System.Diagnostics.CodeAnalysis;
 

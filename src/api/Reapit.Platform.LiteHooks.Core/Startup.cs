@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Reapit.Platform.CQRS;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Reapit.Platform.LiteHooks.Core;
@@ -14,9 +14,8 @@ public static class Startup
     /// <returns>A reference to the application builder after the services have been added.</returns>
     public static IHostApplicationBuilder AddCoreServices(this IHostApplicationBuilder builder)
     {
-        builder.Services.AddMediatR(cfg =>
-            cfg.RegisterServicesFromAssemblyContaining<UseCases.Examples.CreateExample.CreateExampleCommandHandler>());
-
+        builder.AddReapitMediator(cfg => cfg.Assemblies = [typeof(Startup).Assembly]);
+        
         builder.Services.AddValidatorsFromAssemblyContaining(typeof(UseCases.Examples.CreateExample.CreateExampleCommandValidator));
 
         return builder;

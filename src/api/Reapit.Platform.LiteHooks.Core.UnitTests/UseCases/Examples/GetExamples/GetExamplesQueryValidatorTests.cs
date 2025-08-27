@@ -1,5 +1,4 @@
-﻿using Reapit.Platform.Testing.Fluent;
-using Reapit.Platform.LiteHooks.Core.UseCases;
+﻿using Reapit.Platform.LiteHooks.Core.UseCases;
 using Reapit.Platform.LiteHooks.Core.UseCases.Examples.GetExamples;
 
 namespace Reapit.Platform.LiteHooks.Core.UnitTests.UseCases.Examples.GetExamples;
