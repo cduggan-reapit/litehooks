@@ -17,16 +17,22 @@ builder.AddLoggingServices();
 // Add services from Reapit packages
 // Registration for these will switch target IHostApplicationBuilder rather than IServiceCollection, keep an eye out!
 builder.Services.AddCommonServices()
-    .AddRangedApiVersioning(typeof(Reapit.Platform.LiteHooks.Api.Program).Assembly, new VersionedApiOptions { ApiVersionHeader = apiVersionHeader })
+    .AddRangedApiVersioning(
+        typeof(Reapit.Platform.LiteHooks.Api.Program).Assembly, 
+        new VersionedApiOptions
+        {
+            ApiVersionHeader = apiVersionHeader
+        })
     .AddReapitSwagger(new ReapitSwaggerOptions
     {
         ApiVersionHeader = apiVersionHeader,
-        DocumentTitle = "Reapit Demo API",
-        UseXmlDocumentation = true
+        DocumentTitle = "LiteHooks API",
+        UseXmlDocumentation = true,
+        RequireBearerToken = true
     })
     .AddExceptionHandler<ValidationExceptionHandler>()
     .AddExceptionHandler<QueryValidationExceptionHandler>()
-    .RegisterDefaultExceptionHandlers();
+    .AddPlatformErrorHandling();
 
 // Add services from other projects in this solution
 builder.AddCoreServices()
