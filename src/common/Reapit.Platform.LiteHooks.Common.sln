@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Common", "Reapit.Platform.LiteHooks.Common\Reapit.Platform.LiteHooks.Common.csproj", "{BF4A048D-3EE4-4E41-9BC8-5DD08AECB86E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Common.UnitTests", "Reapit.Platform.LiteHooks.Common.UnitTests\Reapit.Platform.LiteHooks.Common.UnitTests.csproj", "{6B9C46D3-62BB-4407-A997-1519ADBD6D79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF4A048D-3EE4-4E41-9BC8-5DD08AECB86E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4A048D-3EE4-4E41-9BC8-5DD08AECB86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4A048D-3EE4-4E41-9BC8-5DD08AECB86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4A048D-3EE4-4E41-9BC8-5DD08AECB86E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9C46D3-62BB-4407-A997-1519ADBD6D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9C46D3-62BB-4407-A997-1519ADBD6D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9C46D3-62BB-4407-A997-1519ADBD6D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9C46D3-62BB-4407-A997-1519ADBD6D79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

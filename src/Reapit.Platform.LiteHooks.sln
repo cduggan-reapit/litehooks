@@ -1,0 +1,169 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{C7C729B8-2610-480B-8B97-3AB97716EECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Api", "api\Reapit.Platform.LiteHooks.Api\Reapit.Platform.LiteHooks.Api.csproj", "{5D69A95E-EBCB-4C40-9CCE-AC066999BC5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Api.IntegrationTests", "api\Reapit.Platform.LiteHooks.Api.IntegrationTests\Reapit.Platform.LiteHooks.Api.IntegrationTests.csproj", "{0E7DC411-6164-4020-B4D3-AB06FA52D72F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Api.UnitTests", "api\Reapit.Platform.LiteHooks.Api.UnitTests\Reapit.Platform.LiteHooks.Api.UnitTests.csproj", "{D8B7BE1D-5BB0-4E0C-A7E9-4D17138A5E21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Core", "api\Reapit.Platform.LiteHooks.Core\Reapit.Platform.LiteHooks.Core.csproj", "{E6D8D241-BE8F-400A-99E4-14894602E09D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Core.UnitTests", "api\Reapit.Platform.LiteHooks.Core.UnitTests\Reapit.Platform.LiteHooks.Core.UnitTests.csproj", "{4220C31E-1247-4E7F-8929-C1B766953651}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Data", "api\Reapit.Platform.LiteHooks.Data\Reapit.Platform.LiteHooks.Data.csproj", "{956B03A1-0FEB-4340-A354-25E8F7AFD76A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Data.UnitTests", "api\Reapit.Platform.LiteHooks.Data.UnitTests\Reapit.Platform.LiteHooks.Data.UnitTests.csproj", "{F0930E41-F847-4510-B51A-C6E8FE3F3A6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Domain", "api\Reapit.Platform.LiteHooks.Domain\Reapit.Platform.LiteHooks.Domain.csproj", "{62309202-C69F-4FC8-8393-647FD3252598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Domain.UnitTests", "api\Reapit.Platform.LiteHooks.Domain.UnitTests\Reapit.Platform.LiteHooks.Domain.UnitTests.csproj", "{5B7B5754-3492-4B93-A8CE-020FC420EC0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{24240A1E-722A-4E50-AE4F-698C2398D3FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Common", "common\Reapit.Platform.LiteHooks.Common\Reapit.Platform.LiteHooks.Common.csproj", "{F005DB26-287F-4EE9-B012-865AA0DC7B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Common.UnitTests", "common\Reapit.Platform.LiteHooks.Common.UnitTests\Reapit.Platform.LiteHooks.Common.UnitTests.csproj", "{C869633E-6139-4A8D-AB89-4C90AC002BA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{503A6B50-E607-44F2-8892-99B112335CF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Client", "client\Reapit.Platform.LiteHooks.Client\Reapit.Platform.LiteHooks.Client.csproj", "{DEF68CE9-84F5-4023-95ED-53918EBDD92F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Client.UnitTests", "client\Reapit.Platform.LiteHooks.Client.UnitTests\Reapit.Platform.LiteHooks.Client.UnitTests.csproj", "{90CF041C-43F8-4EDD-9B55-B90500BAF670}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "processor", "processor", "{BB8EDCF9-B020-4804-A54C-F49BFD1371DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Processor", "processor\Reapit.Platform.LiteHooks.Processor\Reapit.Platform.LiteHooks.Processor.csproj", "{573C002C-E17E-4886-AF21-F4EA0B17B8E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Processor.UnitTests", "processor\Reapit.Platform.LiteHooks.Processor.UnitTests\Reapit.Platform.LiteHooks.Processor.UnitTests.csproj", "{22043996-89B9-4A49-A8B4-B9E6DCAA2604}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".project", ".project", "{237BF00C-3606-4B76-AC25-46CE0342E0D3}"
+	ProjectSection(SolutionItems) = preProject
+		..\.commitlintrc.yml = ..\.commitlintrc.yml
+		..\.editorconfig = ..\.editorconfig
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\package.json = ..\package.json
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{D8956A5D-398F-43DF-A622-8EB6C13B589A}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\CODEOWNERS = ..\.github\CODEOWNERS
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F9921F75-3522-4ED0-8173-AF2AFA612E9B}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\commit-linting.yml = ..\.github\workflows\commit-linting.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "publisher", "publisher", "{66AF8CFE-A065-49D2-8273-B65CE73A398B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Publisher", "publisher\Reapit.Platform.LiteHooks.Publisher\Reapit.Platform.LiteHooks.Publisher.csproj", "{94FC269F-FDDC-4421-A40C-CA6818FD5E51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reapit.Platform.LiteHooks.Publisher.UnitTests", "publisher\Reapit.Platform.LiteHooks.Publisher.UnitTests\Reapit.Platform.LiteHooks.Publisher.UnitTests.csproj", "{7A44293A-CD53-4101-82B0-F149D7110469}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D69A95E-EBCB-4C40-9CCE-AC066999BC5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D69A95E-EBCB-4C40-9CCE-AC066999BC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D69A95E-EBCB-4C40-9CCE-AC066999BC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D69A95E-EBCB-4C40-9CCE-AC066999BC5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7DC411-6164-4020-B4D3-AB06FA52D72F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7DC411-6164-4020-B4D3-AB06FA52D72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7DC411-6164-4020-B4D3-AB06FA52D72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7DC411-6164-4020-B4D3-AB06FA52D72F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B7BE1D-5BB0-4E0C-A7E9-4D17138A5E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B7BE1D-5BB0-4E0C-A7E9-4D17138A5E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B7BE1D-5BB0-4E0C-A7E9-4D17138A5E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B7BE1D-5BB0-4E0C-A7E9-4D17138A5E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D8D241-BE8F-400A-99E4-14894602E09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D8D241-BE8F-400A-99E4-14894602E09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D8D241-BE8F-400A-99E4-14894602E09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D8D241-BE8F-400A-99E4-14894602E09D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4220C31E-1247-4E7F-8929-C1B766953651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4220C31E-1247-4E7F-8929-C1B766953651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4220C31E-1247-4E7F-8929-C1B766953651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4220C31E-1247-4E7F-8929-C1B766953651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956B03A1-0FEB-4340-A354-25E8F7AFD76A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956B03A1-0FEB-4340-A354-25E8F7AFD76A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956B03A1-0FEB-4340-A354-25E8F7AFD76A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956B03A1-0FEB-4340-A354-25E8F7AFD76A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0930E41-F847-4510-B51A-C6E8FE3F3A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0930E41-F847-4510-B51A-C6E8FE3F3A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0930E41-F847-4510-B51A-C6E8FE3F3A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0930E41-F847-4510-B51A-C6E8FE3F3A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62309202-C69F-4FC8-8393-647FD3252598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62309202-C69F-4FC8-8393-647FD3252598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62309202-C69F-4FC8-8393-647FD3252598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62309202-C69F-4FC8-8393-647FD3252598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7B5754-3492-4B93-A8CE-020FC420EC0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7B5754-3492-4B93-A8CE-020FC420EC0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7B5754-3492-4B93-A8CE-020FC420EC0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7B5754-3492-4B93-A8CE-020FC420EC0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F005DB26-287F-4EE9-B012-865AA0DC7B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F005DB26-287F-4EE9-B012-865AA0DC7B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F005DB26-287F-4EE9-B012-865AA0DC7B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F005DB26-287F-4EE9-B012-865AA0DC7B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C869633E-6139-4A8D-AB89-4C90AC002BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C869633E-6139-4A8D-AB89-4C90AC002BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C869633E-6139-4A8D-AB89-4C90AC002BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C869633E-6139-4A8D-AB89-4C90AC002BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF68CE9-84F5-4023-95ED-53918EBDD92F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF68CE9-84F5-4023-95ED-53918EBDD92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF68CE9-84F5-4023-95ED-53918EBDD92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF68CE9-84F5-4023-95ED-53918EBDD92F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90CF041C-43F8-4EDD-9B55-B90500BAF670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CF041C-43F8-4EDD-9B55-B90500BAF670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CF041C-43F8-4EDD-9B55-B90500BAF670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CF041C-43F8-4EDD-9B55-B90500BAF670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{573C002C-E17E-4886-AF21-F4EA0B17B8E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{573C002C-E17E-4886-AF21-F4EA0B17B8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{573C002C-E17E-4886-AF21-F4EA0B17B8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{573C002C-E17E-4886-AF21-F4EA0B17B8E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22043996-89B9-4A49-A8B4-B9E6DCAA2604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22043996-89B9-4A49-A8B4-B9E6DCAA2604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22043996-89B9-4A49-A8B4-B9E6DCAA2604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22043996-89B9-4A49-A8B4-B9E6DCAA2604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94FC269F-FDDC-4421-A40C-CA6818FD5E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94FC269F-FDDC-4421-A40C-CA6818FD5E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94FC269F-FDDC-4421-A40C-CA6818FD5E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94FC269F-FDDC-4421-A40C-CA6818FD5E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A44293A-CD53-4101-82B0-F149D7110469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A44293A-CD53-4101-82B0-F149D7110469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A44293A-CD53-4101-82B0-F149D7110469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A44293A-CD53-4101-82B0-F149D7110469}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D69A95E-EBCB-4C40-9CCE-AC066999BC5D} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{0E7DC411-6164-4020-B4D3-AB06FA52D72F} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{D8B7BE1D-5BB0-4E0C-A7E9-4D17138A5E21} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{E6D8D241-BE8F-400A-99E4-14894602E09D} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{4220C31E-1247-4E7F-8929-C1B766953651} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{956B03A1-0FEB-4340-A354-25E8F7AFD76A} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{F0930E41-F847-4510-B51A-C6E8FE3F3A6D} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{62309202-C69F-4FC8-8393-647FD3252598} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{5B7B5754-3492-4B93-A8CE-020FC420EC0F} = {C7C729B8-2610-480B-8B97-3AB97716EECB}
+		{F005DB26-287F-4EE9-B012-865AA0DC7B82} = {24240A1E-722A-4E50-AE4F-698C2398D3FE}
+		{C869633E-6139-4A8D-AB89-4C90AC002BA4} = {24240A1E-722A-4E50-AE4F-698C2398D3FE}
+		{DEF68CE9-84F5-4023-95ED-53918EBDD92F} = {503A6B50-E607-44F2-8892-99B112335CF6}
+		{90CF041C-43F8-4EDD-9B55-B90500BAF670} = {503A6B50-E607-44F2-8892-99B112335CF6}
+		{573C002C-E17E-4886-AF21-F4EA0B17B8E0} = {BB8EDCF9-B020-4804-A54C-F49BFD1371DF}
+		{22043996-89B9-4A49-A8B4-B9E6DCAA2604} = {BB8EDCF9-B020-4804-A54C-F49BFD1371DF}
+		{D8956A5D-398F-43DF-A622-8EB6C13B589A} = {237BF00C-3606-4B76-AC25-46CE0342E0D3}
+		{F9921F75-3522-4ED0-8173-AF2AFA612E9B} = {D8956A5D-398F-43DF-A622-8EB6C13B589A}
+		{94FC269F-FDDC-4421-A40C-CA6818FD5E51} = {66AF8CFE-A065-49D2-8273-B65CE73A398B}
+		{7A44293A-CD53-4101-82B0-F149D7110469} = {66AF8CFE-A065-49D2-8273-B65CE73A398B}
+	EndGlobalSection
+EndGlobal
